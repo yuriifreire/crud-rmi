@@ -10,7 +10,7 @@ public interface Servidor extends Remote
 
     public void deletarEstudante(int id) throws RemoteException;
 
-    public void attEstudante(int id, String m, String n, String e) throws RemoteException;
+    public void attEstudante(int id, String matricula, String nome, String endereco) throws RemoteException;
     
     public Estudante searchEstudante(int id) throws RemoteException;
     
