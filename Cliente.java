@@ -1,13 +1,15 @@
 import java.rmi.*;
+import java.rmi.RemoteException;
 import java.util.*;
-import java.io.*;
+import java.util.Scanner;
+import java.io.Serializable;
 
 public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public Cliente() {
 
-		System.out.println("Iniciando o Cliente...");
+		System.out.println("Inicializando o Cliente...");
 		try {
 			servidor = (Servidor) Naming.lookup("rmi://127.0.0.1/ServidorTeste");
 		} catch (Exception e) {
@@ -31,13 +33,14 @@ public class Cliente implements Serializable {
 	}
 
 	public void menu() {
-		System.out.println(".: Republica IFRN :.");
-		System.out.println("--------Menu--------");
+		System.out.println("..:: Republica IFRN ::..");
+		System.out.println("----------Menu----------");
 		System.out.println("1 - Adicionar Estudante");
 		System.out.println("2 - Listar Estudante");
 		System.out.println("3 - Atualizar Estudante");
 		System.out.println("4 - Remover Estudante");
 		System.out.println("5 - Sair");
+		System.out.println("------------------------");
 	}
 
 	public void principal(int digit) {
@@ -61,10 +64,11 @@ public class Cliente implements Serializable {
 				if (!servidor.listaEstudantes().isEmpty()) {
 					System.out.println("--------------------------------------");
 					for (Estudante est : servidor.listaEstudantes()) {
-						System.out.println("ID - |" + est.getId() + "|");
-						System.out.println("MATRICULA - |" + est.getMatricula() + "|");
-						System.out.println("NOME - |" + est.getNome() + "|" );
-						System.out.println("ENDEREÇO - |" + est.getEndereco()+ "|");
+						System.out.println("ID - " + est.getId());
+						System.out.println("MATRICULA - " + est.getMatricula());
+						System.out.println("NOME - " + est.getNome());
+						System.out.println("ENDEREÇO - " + est.getEndereco());
+						System.out.println("-------------------------------------");
 					}
 				} else {
 					System.out.println("Não existem estudantes cadastrados");
